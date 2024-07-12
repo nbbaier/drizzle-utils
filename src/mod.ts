@@ -80,3 +80,14 @@ export function coalesce<T>(
 ): SQL<T> {
   return sql<T>`coalesce(${value}, ${defaultValue})`;
 }
+
+/**
+ * Returns the current date and time as a SQL string.
+ * @param {boolean} [localtime] - Optional parameter to specify whether to return the local time or not. Default is false.
+ * @returns {SQL<string>} The current date and time as a SQL string.
+ */
+export function now(localtime?: boolean): SQL<string> {
+  return localtime
+    ? sql<string>`datetime('now', 'localtime')`
+    : sql<string>`datetime('now')`;
+}
