@@ -2,7 +2,7 @@
   "name": "@nbbaier/drizzle-utils",
   "version": "0.2.1",
   "exports": "./src/mod.ts",
-  "description": "n",
+  "description": "A collection of personal utilities for working with drizzle-orm",
   "tasks": {
     "dev": "deno run --watch main.ts"
   },
