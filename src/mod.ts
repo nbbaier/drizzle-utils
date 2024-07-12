@@ -7,7 +7,7 @@ import { sql, type AnyColumn, type SQL } from "drizzle-orm";
  * @param {T[]} items - The array from which to retrieve the first element.
  * @returns {T} - The first element of the array.
  */
-export function takeFirst<T>(items: T[]) {
+export function takeFirst<T>(items: T[]): T | undefined {
   return items.at(0);
 }
 
@@ -19,7 +19,7 @@ export function takeFirst<T>(items: T[]) {
  * @returns {T} - The first item in the array.
  * @throws {Error} - Throws an error if the array is empty.
  */
-export function takeFirstOrThrow<T>(items: T[]) {
+export function takeFirstOrThrow<T>(items: T[]): T {
   const first = takeFirst(items);
 
   if (!first) {
@@ -36,7 +36,9 @@ export function takeFirstOrThrow<T>(items: T[]) {
  * @param {Column} column - The column to select distinct values from.
  * @returns {sql<Column["_"]["data"]>} - The SQL query string.
  */
-export function distinct<Column extends AnyColumn>(column: Column) {
+export function distinct<Column extends AnyColumn>(
+  column: Column
+): SQL<Column["_"]["data"]> {
   return sql<Column["_"]["data"]>`distinct(${column})`;
 }
 
@@ -47,7 +49,9 @@ export function distinct<Column extends AnyColumn>(column: Column) {
  * @param {Column} column - The column to find the maximum value of.
  * @returns {SQLExpression<Column["_"]["data"]>} - A SQL expression representing the maximum value of the column.
  */
-export function max<Column extends AnyColumn>(column: Column) {
+export function max<Column extends AnyColumn>(
+  column: Column
+): SQL<Column["_"]["data"]> {
   return sql<Column["_"]["data"]>`max(${column})`;
 }
 
@@ -57,7 +61,7 @@ export function max<Column extends AnyColumn>(column: Column) {
  * @param column - The column to count.
  * @returns A SQL expression representing the count of the column.
  */
-export function count<Column extends AnyColumn>(column: Column) {
+export function count<Column extends AnyColumn>(column: Column): SQL<number> {
   return sql<number>`cast(count(${column}) as integer)`;
 }
 
@@ -70,6 +74,9 @@ export function count<Column extends AnyColumn>(column: Column) {
  * @param {SQL} defaultValue - The default value to be returned if the first value is null or undefined.
  * @returns {SQL<T>} - The SQL expression representing the coalesced value.
  */
-export function coalesce<T>(value: SQL.Aliased<T> | SQL<T>, defaultValue: SQL) {
+export function coalesce<T>(
+  value: SQL.Aliased<T> | SQL<T>,
+  defaultValue: SQL
+): SQL<T> {
   return sql<T>`coalesce(${value}, ${defaultValue})`;
 }
