@@ -1,0 +1,20 @@
+{
+  "version": "3",
+  "packages": {
+    "specifiers": {
+      "npm:drizzle-orm@^0.32.0": "npm:drizzle-orm@0.32.0"
+    },
+    "npm": {
+      "drizzle-orm@0.32.0": {
+        "integrity": "sha512-99IlfVGPNHzOFEXo9Phyu5At5TALLsY2t6WxFFy68rYd9Ej4cHX/7WjdPOn7JNRW69MNeNtP8XrDQg43SppuAA==",
+        "dependencies": {}
+      }
+    }
+  },
+  "remote": {},
+  "workspace": {
+    "dependencies": [
+      "npm:drizzle-orm@^0.32.0"
+    ]
+  }
+}
