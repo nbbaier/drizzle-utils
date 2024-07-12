@@ -1,6 +1,6 @@
 {
   "name": "@nbbaier/drizzle-utils",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "exports": "./src/mod.ts",
   "description": "A collection of personal utilities for working with Drizzle ORM",
   "tasks": {
